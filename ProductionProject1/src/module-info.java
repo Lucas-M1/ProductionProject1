@@ -6,4 +6,5 @@
  *
  */
 module ProductionProject1 {
+	requires java.desktop;
 }
