@@ -16,8 +16,9 @@ public class Main {
 		
 		window.pack(); //Ensures game window is the size of the preferred size
 		
-		window.setVisible(true);
+		
 		window.setLocationRelativeTo(null);
+		window.setVisible(true);
 		
 		frame.gameThread(); //Starts the game thread when the program is run
 
