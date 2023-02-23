@@ -8,12 +8,14 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicTreeUI.KeyHandler;
 
+import Characters.Player;
+
 public class Frame extends JPanel implements Runnable{ //Class created to run the game thread so runnable is implemented 
 	
 	UserInput k = new UserInput();
 	final int tileSize = 16;
 	final int tileScale = 3;
-	final int realTileSize = tileSize * tileScale;  //panel size is established and scaled up to ensure objects on the screen are large enough and easily visible 
+	public final int realTileSize = tileSize * tileScale;  //panel size is established and scaled up to ensure objects on the screen are large enough and easily visible 
 	final int maxHorScreenSize = 20;
 	final int maxVerScreenSize = 15;
 	final int height = realTileSize * maxVerScreenSize;
@@ -23,6 +25,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	int speed = 5;
 	int xpos = 150;
 	int ypos = 150;
+	Player p = new Player(this, k);
 
 	
 	public Frame() {
@@ -73,26 +76,13 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	}
 	
 	public void refresh() {
-		if (k.up == true) {
-			ypos = ypos - speed;
-			
-		}
-		else if(k.down == true) {
-			ypos = ypos + speed;
-		}
-		else if (k.left == true) {
-			xpos = xpos - speed;
-		}
-		else if (k.right == true) {
-			xpos = xpos + speed;
-		}
+		p.refresh();
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D graphics2d = (Graphics2D)g; //Graphic2D is used over Graphics as it provides more functionality 
-		graphics2d.setColor(Color.green);
-		graphics2d.fillRect(xpos, ypos, realTileSize, realTileSize);
+		p.draw(graphics2d);
 		graphics2d.dispose();
 	}
 	
