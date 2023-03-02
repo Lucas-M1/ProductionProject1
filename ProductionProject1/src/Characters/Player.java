@@ -26,7 +26,7 @@ public class Player extends Object {
 		
 		try {
 			l1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-1.png"));
-			l2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-2.png"));
+			l2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-3.png"));
 			l3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-3.png"));
 			upStill = ImageIO.read(getClass().getResourceAsStream("/character/sprite-4.png"));
 			downStill = ImageIO.read(getClass().getResourceAsStream("/character/sprite-6.png"));
@@ -37,7 +37,7 @@ public class Player extends Object {
 			d2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-10.png"));
 			d3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-11.png"));
 			r1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-12.png"));
-			r2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-13.png"));
+			r2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-14.png"));
 			r3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-14.png"));
 					
 		}
@@ -56,6 +56,8 @@ public class Player extends Object {
 	}
 	
 	public void refresh() {
+		
+		
 		if (k.up == true) {
 			direction = "up";
 			posY = posY - playerSpeed;
@@ -73,6 +75,16 @@ public class Player extends Object {
 			direction = "right";
 			posX = posX + playerSpeed;
 		}
+		playerCounter++;
+		if(playerCounter > 10) {
+			if(playerNumber == 1) {
+				playerNumber = 2;
+			}
+			else if(playerNumber == 2) {
+				playerNumber = 1;
+			}
+			playerCounter = 0;
+		}
 		
 	}
 	
@@ -83,16 +95,48 @@ public class Player extends Object {
 		BufferedImage img = null;
 		switch (direction) {
 		case "right":
-			img = r1;
+			if(playerNumber == 1) {
+				img = r1;
+			}
+			if(playerNumber == 2) {
+				img = r2;
+			}
+			if(playerNumber == 3) {
+				img = r3;
+			}
 			break;
 		case "down":
-			img = d1;
+			if(playerNumber == 1) {
+				img = d1;
+			}
+			if(playerNumber == 2) {
+				img = d2;
+			}
+			if(playerNumber == 3) {
+				img = d3;
+			}
 			break;
 		case "up":
-			img = u1;
+			if(playerNumber == 1) {
+				img = u1;
+			}
+			if(playerNumber == 2) {
+				img = u2;
+			}
+			if(playerNumber == 3) {
+				img = u3;
+			}
 			break;
 		case "left":
-			img = l1;
+			if(playerNumber == 1) {
+				img = l1;
+			}
+			if(playerNumber == 2) {
+				img = l2;
+			}
+			if(playerNumber == 3) {
+				img = l3;
+			}
 			break;
 		}
 		graphics2d.drawImage(img, posX, posY, f.realTileSize, f.realTileSize, null);

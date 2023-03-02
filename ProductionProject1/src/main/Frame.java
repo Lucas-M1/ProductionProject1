@@ -13,6 +13,7 @@ import Characters.Player;
 public class Frame extends JPanel implements Runnable{ //Class created to run the game thread so runnable is implemented 
 	
 	UserInput k = new UserInput();
+	int framesPerSecond = 60;
 	final int tileSize = 16;
 	final int tileScale = 3;
 	public final int realTileSize = tileSize * tileScale;  //panel size is established and scaled up to ensure objects on the screen are large enough and easily visible 
@@ -47,8 +48,39 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	@Override
 	public void run() { //run method called when game thread starts
 		
-		double framesPerSecond = 1000/60;
-		double nextUpdate = System.currentTimeMillis() + framesPerSecond;
+		/*
+		double interval = 1000000000/framesPerSecond;
+		double delta = 0;
+		long lastTime = System.nanoTime();
+		long currentTime;
+		long timer = 0;
+		int drawCount = 0;
+		
+		while (game != null) {
+			currentTime = System.nanoTime();
+			
+			delta += (currentTime - lastTime) / interval;
+			timer += (currentTime - lastTime);
+			lastTime = currentTime;
+			
+			if (delta >= 2) {
+				refresh();
+				repaint();
+				delta--;
+				drawCount++;
+				
+			}
+			
+			if(timer >= 1000000000) {
+				drawCount = 0;
+				timer = 0;
+			}
+			
+			
+		}
+		*/
+		double interval = 1000000000/framesPerSecond; //The time for one loop, so in 1 second, the game loop runs 60 times
+		double nextUpdate = System.nanoTime() + framesPerSecond;
 		
 		while (game != null) { //While the game is running:
 			refresh();
@@ -56,14 +88,14 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 			
 			
 			try {
-				double sleepTime = nextUpdate - System.currentTimeMillis();
-				sleepTime = sleepTime/1000;
+				double sleepTime = nextUpdate - System.nanoTime();
+				sleepTime = sleepTime/1000000;
 				
 				if (sleepTime < 0) {
 					sleepTime = 0;
 				}
 				Thread.sleep((long) sleepTime);
-				nextUpdate = nextUpdate + framesPerSecond;
+				nextUpdate = nextUpdate + interval;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
