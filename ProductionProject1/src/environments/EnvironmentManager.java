@@ -1,6 +1,10 @@
 package environments;
 
+import java.awt.Graphics2D;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
@@ -8,6 +12,7 @@ import main.Frame;
 
 public class EnvironmentManager {
 	
+	int layout [] [];
 	Frame f;
 	Environment[] env;
 	
@@ -15,8 +20,10 @@ public class EnvironmentManager {
 		
 		
 		env = new Environment[10];
+		layout = new int [f.maxVerScreenSize][f.maxHorScreenSize];
 		this.f = f;
-		
+		getEnvironment();
+		layout();
 		
 		
 	}
@@ -45,5 +52,82 @@ public class EnvironmentManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public void layout () {
+		try {
+			InputStream map = getClass().getResourceAsStream("/layout/gameEnvironment.txt");
+			BufferedReader b = new BufferedReader(new InputStreamReader(map)); //Reads contents of the text file containing the map layout
+
+			int ver = 0;
+			int hor = 0;
+
+			while(ver <f.maxVerScreenSize && hor < f.maxHorScreenSize) {
+				String read = b.readLine();
+				while(ver < f.maxVerScreenSize) {
+					String values[] = read.split(" ");
+					
+					int val = Integer.parseInt(values[ver]);
+					layout[ver][hor] = val;
+					ver++;
+			}
+			if(ver == f.maxVerScreenSize) {
+				ver = 0;
+				hor++;
+			}
+		}
+		b.close();
+			
+		}catch(Exception e) {
+			
+		}
+	}
+		
+	
+			
+	public void draw(Graphics2D graphics2d) {
+		int ver = 0;
+		int hor = 0;
+		int xPos = 0;
+		int yPos = 0;
+		
+		while(ver < f.maxVerScreenSize && hor < f.maxHorScreenSize) {
+			int mapVal = layout[ver][hor]; //whatever value is present in the array is what will be drawn to the screen, e.g, it a 4 is present in the array, water will be printed to the screen in the specified tile position
+			graphics2d.drawImage(env[mapVal].img, xPos, yPos, f.realTileSize, f.realTileSize, null);
+			ver++;
+			xPos = xPos + f.realTileSize;
+			
+			if (ver == f.maxVerScreenSize) {
+				ver = 0;
+				xPos = 0;
+				hor++;
+				yPos = yPos + f.realTileSize;
+			}
+			
+		}
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

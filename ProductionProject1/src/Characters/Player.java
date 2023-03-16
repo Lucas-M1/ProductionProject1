@@ -22,7 +22,7 @@ public class Player extends Object {
 		this.k = k;
 	}
 	
-	public void playerImage() {
+	public void playerImage() { //Gets the png images from the resource package so they can be displayed on the screen
 		
 		try {
 			l1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-1.png"));

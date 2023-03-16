@@ -9,23 +9,26 @@ import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicTreeUI.KeyHandler;
 
 import Characters.Player;
+import environments.EnvironmentManager;
 
 public class Frame extends JPanel implements Runnable{ //Class created to run the game thread so runnable is implemented 
 	
 	UserInput k = new UserInput();
+	EnvironmentManager m = new EnvironmentManager(this);
 	int framesPerSecond = 60;
 	final int tileSize = 16;
 	final int tileScale = 3;
 	public final int realTileSize = tileSize * tileScale;  //panel size is established and scaled up to ensure objects on the screen are large enough and easily visible 
-	final int maxHorScreenSize = 20;
-	final int maxVerScreenSize = 15;
-	final int height = realTileSize * maxVerScreenSize;
-	final int width = realTileSize * maxHorScreenSize;
+	public final int maxHorScreenSize = 12;
+	//public final int maxVerScreenSize = 15;
+	public final int maxVerScreenSize = 16;
+	public final int height = realTileSize * maxHorScreenSize;
+	public final int width = realTileSize * maxVerScreenSize;
 	
 	Thread game; //The game thread allows the application to continue running while other tasks are being executed simultaneously by creating a new thread of execution
-	int speed = 5;
-	int xpos = 150;
-	int ypos = 150;
+	//int speed = 5;
+	//int xpos = 150;
+	//int ypos = 150;
 	Player p = new Player(this, k);
 
 	
@@ -114,6 +117,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D graphics2d = (Graphics2D)g; //Graphic2D is used over Graphics as it provides more functionality 
+		m.draw(graphics2d);
 		p.draw(graphics2d);
 		graphics2d.dispose();
 	}
