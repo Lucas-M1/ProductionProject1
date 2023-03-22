@@ -12,14 +12,25 @@ import main.UserInput;
 
 public class Player extends Object {
 	
+	
 	Frame f;
 	UserInput k;
 	
+	public final int playerX;
+	public final int playerY;
+	
 	public Player(Frame f, UserInput k) {
-		basePlayerStats();
-		playerImage();
+		
 		this.f = f;
 		this.k = k;
+		
+		playerX = f.width/2 - (f.realTileSize/2);
+		playerY = f.height/2 - (f.realTileSize/2);
+		
+		basePlayerStats();
+		playerImage();
+		
+		
 	}
 	
 	public void playerImage() { //Gets the png images from the resource package so they can be displayed on the screen
@@ -48,8 +59,8 @@ public class Player extends Object {
 	
 	public void basePlayerStats() {
 		
-		posX = 150;
-		posY = 150;
+		envX = f.realTileSize * 23; 
+		envY = f.realTileSize * 21;
 		playerSpeed = 4;
 		direction = "right";
 		
@@ -60,20 +71,20 @@ public class Player extends Object {
 		
 		if (k.up == true) {
 			direction = "up";
-			posY = posY - playerSpeed;
+			envY = envY - playerSpeed;
 			
 		}
 		else if(k.down == true) {
 			direction = "down";
-			posY = posY + playerSpeed;
+			envY = envY + playerSpeed;
 		}
 		else if (k.left == true) {
 			direction = "left";
-			posX = posX - playerSpeed;
+			envX = envX - playerSpeed;
 		}
 		else if (k.right == true) {
 			direction = "right";
-			posX = posX + playerSpeed;
+			envX = envX + playerSpeed;
 		}
 		playerCounter++;
 		if(playerCounter > 10) {
@@ -139,7 +150,7 @@ public class Player extends Object {
 			}
 			break;
 		}
-		graphics2d.drawImage(img, posX, posY, f.realTileSize, f.realTileSize, null);
+		graphics2d.drawImage(img, playerX, playerY, f.realTileSize, f.realTileSize, null);
 	}
 
 }

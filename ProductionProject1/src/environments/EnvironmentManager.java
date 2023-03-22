@@ -20,10 +20,10 @@ public class EnvironmentManager {
 		
 		
 		env = new Environment[10];
-		layout = new int [f.maxVerScreenSize][f.maxHorScreenSize];
+		layout = new int [f.worldVerSize][f.worldHorSize];
 		this.f = f;
 		getEnvironment();
-		layout();
+		layout("/layout/gameEnvironment2.txt");
 		
 		
 	}
@@ -45,6 +45,12 @@ public class EnvironmentManager {
 			env[5].img = ImageIO.read(getClass().getResourceAsStream("/environment/water2-1.png"));
 			env[6] = new Environment();
 			env[6].img = ImageIO.read(getClass().getResourceAsStream("/environment/water2-2.png"));
+			env[7] = new Environment();
+			env[7].img = ImageIO.read(getClass().getResourceAsStream("/environment/dirt1.png"));
+			env[8] = new Environment();
+			env[8].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath1.png"));
+			env[9] = new Environment();
+			env[9].img = ImageIO.read(getClass().getResourceAsStream("/environment/tree1.png"));
 			
 			
 		}
@@ -53,24 +59,24 @@ public class EnvironmentManager {
 		}
 	}
 	
-	public void layout () {
+	public void layout (String file) {
 		try {
-			InputStream map = getClass().getResourceAsStream("/layout/gameEnvironment.txt");
+			InputStream map = getClass().getResourceAsStream(file);
 			BufferedReader b = new BufferedReader(new InputStreamReader(map)); //Reads contents of the text file containing the map layout
 
 			int ver = 0;
 			int hor = 0;
 
-			while(ver <f.maxVerScreenSize && hor < f.maxHorScreenSize) {
+			while(ver <f.worldVerSize && hor < f.worldHorSize) {
 				String read = b.readLine();
-				while(ver < f.maxVerScreenSize) {
+				while(ver < f.worldVerSize) {
 					String values[] = read.split(" ");
 					
 					int val = Integer.parseInt(values[ver]);
 					layout[ver][hor] = val;
 					ver++;
 			}
-			if(ver == f.maxVerScreenSize) {
+			if(ver == f.worldVerSize) {
 				ver = 0;
 				hor++;
 			}
@@ -87,20 +93,29 @@ public class EnvironmentManager {
 	public void draw(Graphics2D graphics2d) {
 		int ver = 0;
 		int hor = 0;
-		int xPos = 0;
-		int yPos = 0;
 		
-		while(ver < f.maxVerScreenSize && hor < f.maxHorScreenSize) {
+		
+		while(ver < f.worldVerSize && hor < f.worldHorSize) {
 			int mapVal = layout[ver][hor]; //whatever value is present in the array is what will be drawn to the screen, e.g, it a 4 is present in the array, water will be printed to the screen in the specified tile position
-			graphics2d.drawImage(env[mapVal].img, xPos, yPos, f.realTileSize, f.realTileSize, null);
-			ver++;
-			xPos = xPos + f.realTileSize;
+			int envX = ver * f.realTileSize; //envX and envY refers to the position on the map
+			int envY = hor * f.realTileSize;
+			int playerX = envX - f.p.envX + f.p.playerX;
+			int playerY = envY - f.p.envY + f.p.playerY;
 			
-			if (ver == f.maxVerScreenSize) {
+			if(envX > f.p.envX - f.p.playerX && envX < f.p.envX +f.p.playerX && envY > f.p.envY - f.p.playerY && envY < f.p.envY + f.p.playerY) { //
+				
+				graphics2d.drawImage(env[mapVal].img, playerX, playerY, f.realTileSize, f.realTileSize, null);
+			}
+			
+			
+			ver++;
+			
+			
+			if (ver == f.worldVerSize) {
 				ver = 0;
-				xPos = 0;
+				
 				hor++;
-				yPos = yPos + f.realTileSize;
+				
 			}
 			
 		}

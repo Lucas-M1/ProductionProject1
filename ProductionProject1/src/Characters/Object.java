@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 
 public class Object {
 	
-	public int posX;
-	public int posY;
+	public int envX;
+	public int envY;
 	public int playerSpeed;
 	
 	

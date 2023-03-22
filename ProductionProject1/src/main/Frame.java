@@ -24,12 +24,16 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public final int maxVerScreenSize = 16;
 	public final int height = realTileSize * maxHorScreenSize;
 	public final int width = realTileSize * maxVerScreenSize;
+	public final int worldVerSize = 50;
+	public final int worldHorSize = 50;
+	public final int mapWidth = realTileSize * worldVerSize;
+	public final int mapHeight = realTileSize * worldHorSize;
 	
 	Thread game; //The game thread allows the application to continue running while other tasks are being executed simultaneously by creating a new thread of execution
 	//int speed = 5;
 	//int xpos = 150;
 	//int ypos = 150;
-	Player p = new Player(this, k);
+	public Player p = new Player(this, k);
 
 	
 	public Frame() {
