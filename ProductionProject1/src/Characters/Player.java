@@ -2,6 +2,7 @@ package Characters;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -26,6 +27,12 @@ public class Player extends Object {
 		
 		playerX = f.width/2 - (f.realTileSize/2);
 		playerY = f.height/2 - (f.realTileSize/2);
+		hitBox = new Rectangle(); //Rectangle object acts as the character size when the player comes into contact with an object in the environment that they cannot pass through 
+		hitBox.height = 30; //Only the first 30 pixels on each axis are solid when colliding with an object
+		hitBox.width = 30;
+		hitBox.x = 8;
+		hitBox.y = 16;
+		
 		
 		basePlayerStats();
 		playerImage();

@@ -51,6 +51,7 @@ public class EnvironmentManager {
 			env[8].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath1.png"));
 			env[9] = new Environment();
 			env[9].img = ImageIO.read(getClass().getResourceAsStream("/environment/tree1.png"));
+			env[9].isCollision = true;
 			
 			
 		}
@@ -102,9 +103,9 @@ public class EnvironmentManager {
 			int playerX = envX - f.p.envX + f.p.playerX;
 			int playerY = envY - f.p.envY + f.p.playerY;
 			
-			if(envX > f.p.envX - f.p.playerX && envX < f.p.envX +f.p.playerX && envY > f.p.envY - f.p.playerY && envY < f.p.envY + f.p.playerY) { //
-				
-				graphics2d.drawImage(env[mapVal].img, playerX, playerY, f.realTileSize, f.realTileSize, null);
+			if(envX + f.realTileSize > f.p.envX - f.p.playerX && envX - f.realTileSize < f.p.envX +f.p.playerX && envY + f.realTileSize > f.p.envY - f.p.playerY && envY - f.realTileSize < f.p.envY + f.p.playerY) { //Creates a boundary from the centre of the screen preventing the camera from leaving the map when at the edges
+				                                                                                                                                                                                                      //-playerX from the centre (where the player is) to the left. +playerX from the centre to the right
+				graphics2d.drawImage(env[mapVal].img, playerX, playerY, f.realTileSize, f.realTileSize, null);                                                                                                        //-playerY from the centre (where the player is) to the bottom. +playerY from the centre to the top of the screen
 			}
 			
 			
