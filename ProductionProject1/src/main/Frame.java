@@ -30,6 +30,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public final int mapHeight = realTileSize * worldHorSize;
 	
 	Thread game; //The game thread allows the application to continue running while other tasks are being executed simultaneously by creating a new thread of execution
+	public CollisionDetection c = new CollisionDetection(this);
 	//int speed = 5;
 	//int xpos = 150;
 	//int ypos = 150;

@@ -12,9 +12,9 @@ import main.Frame;
 
 public class EnvironmentManager {
 	
-	int layout [] [];
+	public int layout [] [];
 	Frame f;
-	Environment[] env;
+	public Environment[] env;
 	
 	public EnvironmentManager(Frame f) {
 		

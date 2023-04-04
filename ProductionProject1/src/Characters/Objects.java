@@ -3,7 +3,7 @@ package Characters;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class Object {
+public class Objects {
 	
 	public int envX;
 	public int envY;
@@ -15,6 +15,7 @@ public class Object {
 	public Rectangle hitBox;
 	public int playerCounter = 0;
 	public int playerNumber = 1;
+	public boolean collisionDetected = false;
 	
 
 }

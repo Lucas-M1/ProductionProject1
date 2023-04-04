@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import main.Frame;
 import main.UserInput;
 
-public class Player extends Object {
+public class Player extends Objects {
 	
 	
 	Frame f;
@@ -28,8 +28,8 @@ public class Player extends Object {
 		playerX = f.width/2 - (f.realTileSize/2);
 		playerY = f.height/2 - (f.realTileSize/2);
 		hitBox = new Rectangle(); //Rectangle object acts as the character size when the player comes into contact with an object in the environment that they cannot pass through 
-		hitBox.height = 30; //Only the first 30 pixels on each axis are solid when colliding with an object
-		hitBox.width = 30;
+		hitBox.height = 32; //Only the first 30 pixels on each axis are solid when colliding with an object
+		hitBox.width = 32;
 		hitBox.x = 8;
 		hitBox.y = 16;
 		
@@ -76,34 +76,62 @@ public class Player extends Object {
 	public void refresh() {
 		
 		
-		if (k.up == true) {
-			direction = "up";
-			envY = envY - playerSpeed;
+		if (k.up == true || k.down == true || k.right == true || k.left) {
 			
-		}
-		else if(k.down == true) {
-			direction = "down";
-			envY = envY + playerSpeed;
-		}
-		else if (k.left == true) {
-			direction = "left";
-			envX = envX - playerSpeed;
-		}
-		else if (k.right == true) {
-			direction = "right";
-			envX = envX + playerSpeed;
-		}
-		playerCounter++;
-		if(playerCounter > 10) {
-			if(playerNumber == 1) {
-				playerNumber = 2;
-			}
-			else if(playerNumber == 2) {
-				playerNumber = 1;
-			}
-			playerCounter = 0;
-		}
 		
+		
+			if (k.up == true) {
+				direction = "up";
+				
+				
+			}
+			else if(k.down == true) {
+				direction = "down";
+				
+			}
+			else if (k.left == true) {
+				direction = "left";
+				
+			}
+			else if (k.right == true) {
+				direction = "right";
+				
+			}
+			
+			//Check for collision 
+			collisionDetected = false;
+			f.c.collisionCheck(this);
+			
+			if (collisionDetected == false) {
+				
+				switch(direction) {
+				case "up":
+					envY = envY - playerSpeed;
+					break;
+				case "down":
+					envY = envY + playerSpeed;
+					break;
+				case "right":
+					envX = envX + playerSpeed;
+					break;
+				case "left":
+					envX = envX - playerSpeed;
+					break;
+				
+				}
+			}
+			
+			playerCounter++;
+			if(playerCounter > 12) {
+				if(playerNumber == 1) {
+					playerNumber = 2;
+				}
+				else if(playerNumber == 2) {
+					playerNumber = 1;
+				}
+				playerCounter = 0;
+			}
+		}
 	}
 	
 	public void draw(Graphics2D graphics2d) {
