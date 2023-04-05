@@ -32,9 +32,9 @@ public class EnvironmentManager {
 		
 		try {
 			env[0] = new Environment();
-			env[0].img = ImageIO.read(getClass().getResourceAsStream("/environment/grass1.png"));
+			env[0].img = ImageIO.read(getClass().getResourceAsStream("/environment/newGrass.png"));
 			env[1] = new Environment();
-			env[1].img = ImageIO.read(getClass().getResourceAsStream("/environment/grass2.png"));
+			env[1].img = ImageIO.read(getClass().getResourceAsStream("/environment/newGrass.png"));
 			env[2] = new Environment();
 			env[2].img = ImageIO.read(getClass().getResourceAsStream("/environment/grass3.png"));
 			env[3] = new Environment();
@@ -46,11 +46,11 @@ public class EnvironmentManager {
 			env[6] = new Environment();
 			env[6].img = ImageIO.read(getClass().getResourceAsStream("/environment/water2-2.png"));
 			env[7] = new Environment();
-			env[7].img = ImageIO.read(getClass().getResourceAsStream("/environment/dirt1.png"));
+			env[7].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath.png"));
 			env[8] = new Environment();
 			env[8].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath1.png"));
 			env[9] = new Environment();
-			env[9].img = ImageIO.read(getClass().getResourceAsStream("/environment/tree1.png"));
+			env[9].img = ImageIO.read(getClass().getResourceAsStream("/environment/largeTree.png"));
 			env[9].isCollision = true;
 			
 			

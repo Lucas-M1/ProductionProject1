@@ -20,6 +20,7 @@ public class Main {
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 		
+		frame.itemPlacement();
 		frame.gameThread(); //Starts the game thread when the program is run
 
 	}

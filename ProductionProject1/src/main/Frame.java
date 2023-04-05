@@ -10,6 +10,7 @@ import javax.swing.plaf.basic.BasicTreeUI.KeyHandler;
 
 import Characters.Player;
 import environments.EnvironmentManager;
+import items.WorldItems;
 
 public class Frame extends JPanel implements Runnable{ //Class created to run the game thread so runnable is implemented 
 	
@@ -31,6 +32,8 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	
 	Thread game; //The game thread allows the application to continue running while other tasks are being executed simultaneously by creating a new thread of execution
 	public CollisionDetection c = new CollisionDetection(this);
+	public WorldItems itm[] = new WorldItems[20]; //Number of objects that can be displayed simultaneously
+	public ItemPlacement item = new ItemPlacement(this);
 	//int speed = 5;
 	//int xpos = 150;
 	//int ypos = 150;
@@ -51,6 +54,10 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 		game = new Thread(this);
 		game.start();
 		
+	}
+	
+	public void itemPlacement() {
+		item.itemLocationSet();
 	}
 
 	@Override
@@ -123,6 +130,11 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 		super.paintComponent(g);
 		Graphics2D graphics2d = (Graphics2D)g; //Graphic2D is used over Graphics as it provides more functionality 
 		m.draw(graphics2d);
+		for(int i = 0; i < itm.length; i++) { //loops through the items
+			if(itm[i] != null) {
+				itm[i].draw(graphics2d, this);
+			}
+		}
 		p.draw(graphics2d);
 		graphics2d.dispose();
 	}
