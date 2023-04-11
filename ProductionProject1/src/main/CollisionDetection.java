@@ -81,21 +81,50 @@ public class CollisionDetection {
 				if (object.direction == "up") {
 					object.hitBox.y = object.hitBox.y - object.playerSpeed;
 					if (object.hitBox.intersects(f.itm[i].hitBox)) {  //Checks to see if the 2 hit boxes (from the player and the object) are colliding with each other
-						System.out.println("collision");
+						if (f.itm[i].isCollision == true) {
+							object.collisionDetected = true;
+						}
+						if (player == true) {
+							index = i;
+						}
 
 					}
 				}
 				else if (object.direction == "down") {
 					object.hitBox.y = object.hitBox.y + object.playerSpeed;
+					if (object.hitBox.intersects(f.itm[i].hitBox)) {
+						if (f.itm[i].isCollision == true) {
+							object.collisionDetected = true;
+						}
+						if (player == true) {
+							index = i;
+						}
+						
+					}
 
 				}
 				else if (object.direction == "right") {
 					object.hitBox.x = object.hitBox.x + object.playerSpeed;
+					if (object.hitBox.intersects(f.itm[i].hitBox)) {
+						if (f.itm[i].isCollision == true) {
+							object.collisionDetected = true;
+						}
+						if (player == true) {
+							index = i;
+						}
+						
+					}
 				}
 				else if (object.direction == "left") {
 					object.hitBox.x = object.hitBox.x - object.playerSpeed;
 					if (object.hitBox.intersects(f.itm[i].hitBox)) {
-						System.out.println("collision");
+						if (f.itm[i].isCollision == true) {
+							object.collisionDetected = true;
+						}
+						if (player == true) {
+							index = i;
+						}
+						
 					}
 
 				}

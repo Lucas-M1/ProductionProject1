@@ -17,6 +17,7 @@ public class Player extends Objects {
 	Frame f;
 	UserInput k;
 	
+	int keyCount = 0;
 	public final int playerX;
 	public final int playerY;
 	
@@ -104,7 +105,8 @@ public class Player extends Objects {
 			collisionDetected = false;
 			f.c.collisionCheck(this);
 			
-			f.c.itemCollision(this, true); //Checks for collision with an item such as a door
+			int itemCol = f.c.itemCollision(this, true); //Checks for collision with an item such as a door
+			collectItem(itemCol);
 			
 			if (collisionDetected == false) {
 				
@@ -134,6 +136,27 @@ public class Player extends Objects {
 					playerNumber = 1;
 				}
 				playerCounter = 0;
+			}
+		}
+	}
+	
+	public void collectItem (int i) {
+		if (i != 999) {
+			String item = f.itm[i].itemName;
+			
+			if (item == "key") {
+				keyCount++;
+				f.itm[i] = null;
+				System.out.println(keyCount);
+			}
+			if (item == "door") {
+				if (keyCount > 0) {
+					f.itm[i] = null;
+					keyCount --;
+
+				}
+				System.out.println(keyCount);
+
 			}
 		}
 	}

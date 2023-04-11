@@ -12,7 +12,7 @@ public class WorldItems {
 	public int envY;
 	public BufferedImage img;
 	public boolean isCollision = false;
-	public String name;
+	public String itemName;
 	public Rectangle hitBox = new Rectangle(0,0, 48,48);
 	public int hitBoxX = 0;
 	public int hitBoxY = 0;

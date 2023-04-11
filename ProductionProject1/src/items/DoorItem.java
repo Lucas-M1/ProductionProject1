@@ -8,7 +8,7 @@ public class DoorItem extends WorldItems {
 	
 	public DoorItem() {
 		
-		name = "door";
+		itemName = "door";
 		
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/environment/door1.png"));

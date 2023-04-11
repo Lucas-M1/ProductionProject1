@@ -8,7 +8,7 @@ public class KeyItem extends WorldItems {
 	
 	public KeyItem() {
 		
-		name = "key";
+		itemName = "key";
 		
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/environment/key1.png"));

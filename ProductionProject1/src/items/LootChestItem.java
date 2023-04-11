@@ -8,7 +8,7 @@ public class LootChestItem extends WorldItems {
 	
 	public LootChestItem() {
 		
-		name = "chest";
+		itemName = "chest";
 		
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/environment/mediumChest.png"));
