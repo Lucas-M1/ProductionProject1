@@ -1,6 +1,7 @@
 package items;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.Frame;
@@ -12,6 +13,10 @@ public class WorldItems {
 	public BufferedImage img;
 	public boolean isCollision = false;
 	public String name;
+	public Rectangle hitBox = new Rectangle(0,0, 48,48);
+	public int hitBoxX = 0;
+	public int hitBoxY = 0;
+
 	
 	public void draw(Graphics2D graphics2d, Frame f) {
 		

@@ -14,6 +14,10 @@ public class ItemPlacement {
 		f.itm[0] = new KeyItem();
 		f.itm[0].envX = 23 * f.realTileSize;
 		f.itm[0].envY = 7 * f.realTileSize;
+		
+		f.itm[1] = new KeyItem();
+		f.itm[1].envX = 23 * f.realTileSize;
+		f.itm[1].envY = 40 * f.realTileSize;
 	}
 
 }

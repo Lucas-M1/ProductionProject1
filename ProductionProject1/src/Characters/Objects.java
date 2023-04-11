@@ -16,6 +16,8 @@ public class Objects {
 	public int playerCounter = 0;
 	public int playerNumber = 1;
 	public boolean collisionDetected = false;
+	public int hitBoxX;
+	public int hitBoxY;
 	
 
 }

@@ -38,13 +38,13 @@ public class EnvironmentManager {
 			env[2] = new Environment();
 			env[2].img = ImageIO.read(getClass().getResourceAsStream("/environment/grass3.png"));
 			env[3] = new Environment();
-			env[3].img = ImageIO.read(getClass().getResourceAsStream("/environment/wall1.png"));
+			env[3].img = ImageIO.read(getClass().getResourceAsStream("/environment/BrickWall1.png"));
 			env[4] = new Environment();
 			env[4].img = ImageIO.read(getClass().getResourceAsStream("/environment/water1.png"));
 			env[5] = new Environment();
-			env[5].img = ImageIO.read(getClass().getResourceAsStream("/environment/water2-1.png"));
+			env[5].img = ImageIO.read(getClass().getResourceAsStream("/environment/door1.png"));
 			env[6] = new Environment();
-			env[6].img = ImageIO.read(getClass().getResourceAsStream("/environment/water2-2.png"));
+			env[6].img = ImageIO.read(getClass().getResourceAsStream("/environment/mediumChest.png"));
 			env[7] = new Environment();
 			env[7].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath.png"));
 			env[8] = new Environment();

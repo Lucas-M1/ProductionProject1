@@ -28,6 +28,8 @@ public class Player extends Objects {
 		playerX = f.width/2 - (f.realTileSize/2);
 		playerY = f.height/2 - (f.realTileSize/2);
 		hitBox = new Rectangle(); //Rectangle object acts as the character size when the player comes into contact with an object in the environment that they cannot pass through 
+		hitBoxX = hitBox.x; //Default rectangle position as the current position can change
+		hitBoxY = hitBox.y;
 		hitBox.height = 32; //Only the first 30 pixels on each axis are solid when colliding with an object
 		hitBox.width = 32;
 		hitBox.x = 8;
@@ -101,6 +103,8 @@ public class Player extends Objects {
 			//Check for collision 
 			collisionDetected = false;
 			f.c.collisionCheck(this);
+			
+			f.c.itemCollision(this, true); //Checks for collision with an item such as a door
 			
 			if (collisionDetected == false) {
 				
