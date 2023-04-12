@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import main.Frame;
+import main.Optimization;
 import main.UserInput;
 
 public class Player extends Objects {
@@ -65,6 +66,19 @@ public class Player extends Objects {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public BufferedImage setup(String image) {
+		Optimization op = new Optimization();
+		BufferedImage img = null;
+		
+		try {
+			img = ImageIO.read(getClass().getResourceAsStream("/character/" + image + ".png"));
+			img = op.scaleImage(img, f.realTileSize, f.realTileSize);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return img;
 	}
 	
 	public void basePlayerStats() {
