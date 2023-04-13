@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.Frame;
+import main.Optimization;
 
 public class WorldItems {
 	
@@ -16,6 +17,7 @@ public class WorldItems {
 	public Rectangle hitBox = new Rectangle(0,0, 48,48);
 	public int hitBoxX = 0;
 	public int hitBoxY = 0;
+	Optimization op = new Optimization();
 
 	
 	public void draw(Graphics2D graphics2d, Frame f) {

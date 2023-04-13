@@ -46,26 +46,22 @@ public class Player extends Objects {
 	
 	public void playerImage() { //Gets the png images from the resource package so they can be displayed on the screen
 		
-		try {
-			l1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-1.png"));
-			l2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-3.png"));
-			l3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-3.png"));
-			upStill = ImageIO.read(getClass().getResourceAsStream("/character/sprite-4.png"));
-			downStill = ImageIO.read(getClass().getResourceAsStream("/character/sprite-6.png"));
-			u1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-5.png"));
-			u2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-8.png"));
-			u3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-9.png"));
-			d1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-7.png"));
-			d2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-10.png"));
-			d3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-11.png"));
-			r1 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-12.png"));
-			r2 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-14.png"));
-			r3 = ImageIO.read(getClass().getResourceAsStream("/character/sprite-14.png"));
-					
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		
+		l1 = setup("sprite-1");
+		l2 = setup("sprite-3");
+		l3 = setup("sprite-3");
+		upStill = setup("sprite-4");
+		downStill = setup("sprite-6");
+		u1 = setup("sprite-5");
+		u2 = setup("sprite-8");
+		u3 = setup("sprite-9");
+		d1 = setup("sprite-7");
+		d2 = setup("sprite-10");
+		d3 = setup("sprite-11");
+		r1 = setup("sprite-12");
+		r2 = setup("sprite-14");
+		r3 = setup("sprite-14");
 	}
 	
 	public BufferedImage setup(String image) {
@@ -73,7 +69,7 @@ public class Player extends Objects {
 		BufferedImage img = null;
 		
 		try {
-			img = ImageIO.read(getClass().getResourceAsStream("/character/" + image + ".png"));
+			img = ImageIO.read(getClass().getResourceAsStream("/character/" + image +".png"));
 			img = op.scaleImage(img, f.realTileSize, f.realTileSize);
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -226,7 +222,7 @@ public class Player extends Objects {
 			}
 			break;
 		}
-		graphics2d.drawImage(img, playerX, playerY, f.realTileSize, f.realTileSize, null);
+		graphics2d.drawImage(img, playerX, playerY, null);
 	}
 
 }

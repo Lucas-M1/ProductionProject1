@@ -21,7 +21,7 @@ public class EnvironmentManager {
 	public EnvironmentManager(Frame f) {
 		
 		
-		env = new Environment[40];
+		env = new Environment[50];
 		layout = new int [f.worldVerSize][f.worldHorSize];
 		this.f = f;
 		getEnvironment();
@@ -34,28 +34,28 @@ public class EnvironmentManager {
 		
 		
 			
-			tileSort(10,"woodFloor.png", false);
-			tileSort(11,"newGrass-1.png", false);
-			tileSort(12,"grass3.png", false);
-			tileSort(13,"BrickWall1.png", true);
-			tileSort(14,"newWater.png", true);
-			tileSort(15,"dirt1.png", false);
-			tileSort(16,"mediumChest1.png", false);
-			tileSort(17,"stonePath.png", false);
-			tileSort(18,"stonePath1.png", false);
-			tileSort(19,"largeTree.png", true);
-			tileSort(20,"outerGrass1-topRight.png", false);
-			tileSort(21,"outerGrass2-right.png", false);
-			tileSort(22,"outerGrass3-right.png", false);
-			tileSort(23,"outerGrass4-bottomRight.png", false);
-			tileSort(24,"outerGrass5-bottom.png", false);
-			tileSort(25,"outerGrass6-bottom.png", false);
-			tileSort(26,"outerGrass7-bottomLeft.png", false);
-			tileSort(27,"outerGrass8-left.png", false);
-			tileSort(28,"outerGrass9-left.png", false);
-			tileSort(29,"outerGrass10-topLeft.png", false);
-			tileSort(30,"outerGrass11-top.png", false);
-			tileSort(31,"outerGrass12-top.png", false);
+			tileSort(10, "woodFloor", false);
+			tileSort(11, "newGrass-1", false);
+			tileSort(12, "grass3", false);
+			tileSort(13, "BrickWall1", true);
+			tileSort(14, "newWater", true);
+			tileSort(15, "dirt1", false);
+			tileSort(16, "mediumChest1", false);
+			tileSort(17, "stonePath", false);
+			tileSort(18, "stonePath1", false);
+			tileSort(19, "largeTree", true);
+			tileSort(20, "outerGrass1-topRight", false);
+			tileSort(21, "outerGrass2-right", false);
+			tileSort(22, "outerGrass3-right", false);
+			tileSort(23, "outerGrass4-bottomRight", false);
+			tileSort(24, "outerGrass5-bottom", false);
+			tileSort(25, "outerGrass6-bottom", false);
+			tileSort(26, "outerGrass7-bottomLeft", false);
+			tileSort(27, "outerGrass8-left", false);
+			tileSort(28, "outerGrass9-left", false);
+			tileSort(29, "outerGrass10-topLeft", false);
+			tileSort(30, "outerGrass11-top", false);
+			tileSort(31, "outerGrass12-top", false);
 			
 			
 			/*
@@ -122,8 +122,9 @@ public class EnvironmentManager {
 		
 		try {
 			env[i] = new Environment();
-			env[i].img = ImageIO.read(getClass().getResourceAsStream("/environment/" + imageName + ".png"));
+			env[i].img = ImageIO.read(getClass().getResourceAsStream("/environment/" + imageName +".png"));
 			env[i].img = o.scaleImage(env[i].img, f.realTileSize, f.realTileSize);
+			
 			env[i].isCollision = collision;
 		}catch (IOException e) {
 			e.printStackTrace();
