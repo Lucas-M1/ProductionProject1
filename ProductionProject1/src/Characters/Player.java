@@ -18,7 +18,7 @@ public class Player extends Objects {
 	Frame f;
 	UserInput k;
 	
-	int keyCount = 0;
+	public int keyCount = 0;
 	public final int playerX;
 	public final int playerY;
 	
@@ -157,7 +157,7 @@ public class Player extends Objects {
 			if (item == "key") {
 				keyCount++;
 				f.itm[i] = null;
-				System.out.println(keyCount);
+				
 			}
 			if (item == "door") {
 				if (keyCount > 0) {
@@ -165,7 +165,7 @@ public class Player extends Objects {
 					keyCount --;
 
 				}
-				System.out.println(keyCount);
+				
 
 			}
 		}

@@ -21,7 +21,7 @@ public class EnvironmentManager {
 	public EnvironmentManager(Frame f) {
 		
 		
-		env = new Environment[50];
+		env = new Environment[100];
 		layout = new int [f.worldVerSize][f.worldHorSize];
 		this.f = f;
 		getEnvironment();
@@ -42,7 +42,7 @@ public class EnvironmentManager {
 			tileSort(15, "dirt1", false);
 			tileSort(16, "mediumChest1", false);
 			tileSort(17, "stonePath", false);
-			tileSort(18, "stonePath1", false);
+			tileSort(18, "newTree1", false);
 			tileSort(19, "largeTree", true);
 			tileSort(20, "outerGrass1-topRight", false);
 			tileSort(21, "outerGrass2-right", false);

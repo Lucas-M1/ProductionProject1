@@ -9,6 +9,12 @@ public class UserInput implements KeyListener {
 	public boolean down;
 	public boolean left;
 	public boolean right;
+	Frame f;
+	
+	
+	public UserInput(Frame f) {
+		this.f = f;
+	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -35,6 +41,14 @@ public class UserInput implements KeyListener {
 		if (key == KeyEvent.VK_D) {
 			right = true;
 			
+		}
+		if (key == KeyEvent.VK_ESCAPE) {
+			if(f.state == f.play) {
+				f.state = f.paused;
+			}
+			else if(f.state == f.paused) {
+				f.state = f.play;
+			}
 		}
 		
 	}

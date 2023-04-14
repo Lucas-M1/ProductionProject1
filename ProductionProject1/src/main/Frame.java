@@ -14,7 +14,7 @@ import items.WorldItems;
 
 public class Frame extends JPanel implements Runnable{ //Class created to run the game thread so runnable is implemented 
 	
-	UserInput k = new UserInput();
+	UserInput k = new UserInput(this);
 	EnvironmentManager m = new EnvironmentManager(this);
 	int framesPerSecond = 60;
 	final int tileSize = 16;
@@ -29,7 +29,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public final int worldHorSize = 50;
 	public final int mapWidth = realTileSize * worldVerSize;
 	public final int mapHeight = realTileSize * worldHorSize;
-	
+	public HeadsUpDisplay hud = new HeadsUpDisplay(this);
 	Thread game; //The game thread allows the application to continue running while other tasks are being executed simultaneously by creating a new thread of execution
 	public CollisionDetection c = new CollisionDetection(this);
 	public WorldItems itm[] = new WorldItems[20]; //Number of objects that can be displayed simultaneously
@@ -38,6 +38,11 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	//int xpos = 150;
 	//int ypos = 150;
 	public Player p = new Player(this, k);
+	
+	public int state;
+	public final int play = 1;
+	public final int paused = 2;
+	
 
 	
 	public Frame() {
@@ -58,6 +63,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	
 	public void itemPlacement() {
 		item.itemLocationSet();
+		state = play;
 	}
 
 	@Override
@@ -123,7 +129,14 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	}
 	
 	public void refresh() {
-		p.refresh();
+		
+		if(state == play) {
+			p.refresh();	
+		}
+		
+		if(state == paused) {
+			// NA
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -136,6 +149,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 			}
 		}
 		p.draw(graphics2d);
+		hud.draw(graphics2d);
 		graphics2d.dispose();
 	}
 	
