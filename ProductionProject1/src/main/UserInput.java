@@ -23,33 +23,38 @@ public class UserInput implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) { //When a key is pressed, it's pressed value is set to true 
+	public void keyPressed(KeyEvent e) {                         //When a key is pressed, it's pressed value is set to true 
 		int key = e.getKeyCode();
 		
-		if (key == KeyEvent.VK_W) {
-			up = true;
-			
-		}
-		if (key == KeyEvent.VK_A) {
-			left = true;
-			
-		}
-		if (key == KeyEvent.VK_S) {
-			down = true;
-			
-		}
-		if (key == KeyEvent.VK_D) {
-			right = true;
-			
-		}
-		if (key == KeyEvent.VK_ESCAPE) {
-			if(f.state == f.play) {
-				f.state = f.paused;
+		if(f.state == f.play) {
+			if (key == KeyEvent.VK_W) {
+				up = true;
+				
 			}
-			else if(f.state == f.paused) {
-				f.state = f.play;
+			if (key == KeyEvent.VK_A) {
+				left = true;
+				
 			}
+			if (key == KeyEvent.VK_S) {
+				down = true;
+				
+			}
+			if (key == KeyEvent.VK_D) {
+				right = true;
+				
+			}
+			if (key == KeyEvent.VK_ESCAPE) {
+				if(f.state == f.play) {
+					f.state = f.paused;
+				}
+				else if(f.state == f.paused) {
+					f.state = f.play;
+				}
+			}
+			
 		}
+		
+		
 		
 	}
 

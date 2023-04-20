@@ -1,5 +1,6 @@
 package main;
 
+import Characters.NPC;
 import items.DoorItem;
 import items.KeyItem;
 
@@ -31,6 +32,14 @@ public class ItemPlacement {
 		f.itm[4] = new DoorItem(f);
 		f.itm[4].envX = 11 * f.realTileSize;
 		f.itm[4].envY = 29 * f.realTileSize;
+	}
+	
+	public void npc() {
+		f.npc[0] = new NPC(f);
+		f.npc[0].envX = f.realTileSize*22;
+		f.npc[0].envY = f.realTileSize*22;
+
+		
 	}
 
 }

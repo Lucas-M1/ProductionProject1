@@ -30,91 +30,63 @@ public class EnvironmentManager {
 		
 	}
 	
-	public void getEnvironment() { //Gets each image stored in the environment package containing all of the graphics that make up the environment
+	public void getEnvironment() {                                             //Gets each image stored in the environment package containing all of the graphics that make up the environment
 		
 		
 			
 			tileSort(10, "woodFloor", false);
-			tileSort(11, "newGrass-1", false);
-			tileSort(12, "grass3", false);
+			tileSort(11, "sand1", false);
+			tileSort(12, "sandEdge-topRight", false);
 			tileSort(13, "BrickWall1", true);
 			tileSort(14, "newWater", true);
 			tileSort(15, "dirt1", false);
-			tileSort(16, "mediumChest1", false);
-			tileSort(17, "stonePath", false);
-			tileSort(18, "newTree1", false);
-			tileSort(19, "largeTree", true);
-			tileSort(20, "outerGrass1-topRight", false);
-			tileSort(21, "outerGrass2-right", false);
-			tileSort(22, "outerGrass3-right", false);
-			tileSort(23, "outerGrass4-bottomRight", false);
-			tileSort(24, "outerGrass5-bottom", false);
-			tileSort(25, "outerGrass6-bottom", false);
-			tileSort(26, "outerGrass7-bottomLeft", false);
-			tileSort(27, "outerGrass8-left", false);
-			tileSort(28, "outerGrass9-left", false);
-			tileSort(29, "outerGrass10-topLeft", false);
-			tileSort(30, "outerGrass11-top", false);
-			tileSort(31, "outerGrass12-top", false);
-			
-			
-			/*
-			env[11] = new Environment();
-			env[11].img = ImageIO.read(getClass().getResourceAsStream("/environment/newGrass-1.png"));
-			env[12] = new Environment();
-			env[12].img = ImageIO.read(getClass().getResourceAsStream("/environment/grass3.png"));
-			env[13] = new Environment();
-			env[13].img = ImageIO.read(getClass().getResourceAsStream("/environment/BrickWall1.png"));
-			env[14] = new Environment();
-			env[14].img = ImageIO.read(getClass().getResourceAsStream("/environment/newWater.png"));
-			env[14].isCollision = true;
+			tileSort(16, "mediumChest-1", false);
+			tileSort(17, "sandPath1", false);
+			tileSort(18, "sandEdge-topLeft", false);
+			tileSort(19, "cactus1", true);
+			tileSort(20, "outerSand1-topRight", false);
+			tileSort(21, "outerSand2-right", false);
+			tileSort(22, "outerSand3-right", false);
+			tileSort(23, "outerSand4-bottomRight", false);
+			tileSort(24, "outerSand5-bottom", false);
+			tileSort(25, "outerSand6-bottom", false);
+			tileSort(26, "outerSand7-bottomLeft", false);
+			tileSort(27, "outerSand8-left", false);
+			tileSort(28, "outerSand9-left", false);
+			tileSort(29, "outerSand10-topLeft", false);
+			tileSort(30, "outerSand11-top", false);
+			tileSort(31, "outerSand12-top", false);
+			tileSort(32, "water-topRight", true);
+			tileSort(33, "water-right", true);
+			tileSort(34, "water-bottomRight", true);
+			tileSort(35, "water-bottom", true);
+			tileSort(36, "water-bottomLeft", true);
+			tileSort(37, "water-left", true);
+			tileSort(38, "water-topLeft", true);
+			tileSort(39, "water-top", true);
+			tileSort(40, "rock1", false);
+			tileSort(41, "rock2", false);
+			tileSort(42, "rock3", false);
+			tileSort(43, "castle-topRight", true);
+			tileSort(44, "castle-right", true);
+			tileSort(45, "castle-bottomRight", true);
+			tileSort(46, "castle-bottom", true);
+			tileSort(47, "castle-bottomLeft", true);
+			tileSort(48, "castle-left", true);
+			tileSort(49, "castle-topLeft", true);
+			tileSort(50, "castle-top", true);
 
-			env[15] = new Environment();
-			env[15].img = ImageIO.read(getClass().getResourceAsStream("/environment/dirt1.png"));
-			
 
-			env[16] = new Environment();
-			env[16].img = ImageIO.read(getClass().getResourceAsStream("/environment/mediumChest1.png"));
-			env[17] = new Environment();
-			env[17].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath.png"));
-			env[18] = new Environment();
-			env[18].img = ImageIO.read(getClass().getResourceAsStream("/environment/stonePath1.png"));
-			env[19] = new Environment();
-			env[19].img = ImageIO.read(getClass().getResourceAsStream("/environment/largeTree.png"));
-			env[19].isCollision = true;
-			
-			env[20] = new Environment();
-			env[20].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass1-topRight.png"));
-			env[21] = new Environment();
-			env[21].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass2-right.png"));
-			
-			env[22] = new Environment();
-			env[22].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass3-right.png"));
-			
-			env[23] = new Environment();
-			env[23].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass4-bottomRight.png"));
-			
-			env[24] = new Environment();
-			env[24].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass5-bottom.png"));
-			
-			env[25] = new Environment();
-			env[25].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass6-bottom.png"));
-			
-			env[26] = new Environment();
-			env[26].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass7-bottomLeft.png"));
-			
-			env[27] = new Environment();
-			env[27].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass8-left.png"));
-			
-			env[28] = new Environment();
-			env[28].img = ImageIO.read(getClass().getResourceAsStream("/environment/outerGrass9-left.png"));
-			*/
-			
-			
-			
-			
-			
-		
+
+
+
+
+
+
+
+
+
+
 	}
 	
 	public void tileSort(int i, String imageName, boolean collision) {

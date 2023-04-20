@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -13,11 +14,11 @@ public class HeadsUpDisplay {
 	
 	public boolean popUpMessage = false;
 	public String message = "";
+	public String currentDialogue = "";
 	int counter = 0;
 	public boolean gameFinished = false;
 	
-	double playTime;
-	DecimalFormat format = new DecimalFormat("#0.00");
+	
 	
 	public HeadsUpDisplay(Frame f) {
 		this.f = f;
@@ -48,8 +49,12 @@ public class HeadsUpDisplay {
 			pauseScreen();
 			
 		}
+		
+		if (f.state == f.dialogue) {
+			interactionScreen();
+		}
 	}
-	
+
 	public void pauseScreen() {
 		String txt = "Game Paused";
 		int x = setXCenter(txt);
@@ -57,6 +62,29 @@ public class HeadsUpDisplay {
 		
 		g.drawString(txt, x, y);
 		
+	}
+	
+	public void interactionScreen() {
+		
+			g.setFont(g.getFont().deriveFont(Font.PLAIN, 30F));
+			int width = f.width - (f.realTileSize*4);
+			int height = f.realTileSize*4;
+			int x = f.realTileSize*2; //2 tiles from the left edge of the screen
+			int y = f.realTileSize/2;
+			dialogueWindow(x, y, height, width);
+			x = x + f.realTileSize;
+			y = y + f.realTileSize;
+			g.drawString(currentDialogue, x, y);
+		}
+
+	public void dialogueWindow(int x, int y, int height, int width) {
+		Color colour = new Color(0, 0, 0, 200);
+		g.setColor(colour);
+		g.fillRoundRect(x, y, width, height, 20, 20);
+		colour = new Color(255, 255, 255);
+		g.setColor(colour);
+		g.setStroke(new BasicStroke(5));
+		g.drawRoundRect(x+5, y+5, width - 10, height - 10, 25, 25);
 	}
 	
 	public int setXCenter (String txt) {

@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicTreeUI.KeyHandler;
 
+import Characters.Objects;
 import Characters.Player;
 import environments.EnvironmentManager;
 import items.WorldItems;
@@ -33,6 +34,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	Thread game; //The game thread allows the application to continue running while other tasks are being executed simultaneously by creating a new thread of execution
 	public CollisionDetection c = new CollisionDetection(this);
 	public WorldItems itm[] = new WorldItems[20]; //Number of objects that can be displayed simultaneously
+	public Objects npc[] = new Objects[10];
 	public ItemPlacement item = new ItemPlacement(this);
 	//int speed = 5;
 	//int xpos = 150;
@@ -40,6 +42,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public Player p = new Player(this, k);
 	
 	public int state;
+	public final int dialogue = 3;
 	public final int play = 1;
 	public final int paused = 2;
 	
@@ -63,6 +66,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	
 	public void itemPlacement() {
 		item.itemLocationSet();
+		item.npc();
 		state = play;
 	}
 
@@ -131,7 +135,13 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public void refresh() {
 		
 		if(state == play) {
-			p.refresh();	
+			p.refresh();
+			
+			for (int i = 0; i < npc.length; i++) {
+				if(npc[i] != null) {
+					npc[i].refresh();
+				}
+			}
 		}
 		
 		if(state == paused) {
@@ -141,11 +151,16 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Graphics2D graphics2d = (Graphics2D)g; //Graphic2D is used over Graphics as it provides more functionality 
+		Graphics2D graphics2d = (Graphics2D)g;                      //Graphic2D is used over Graphics as it provides more functionality 
 		m.draw(graphics2d);
-		for(int i = 0; i < itm.length; i++) { //loops through the items
+		for(int i = 0; i < itm.length; i++) { 
 			if(itm[i] != null) {
 				itm[i].draw(graphics2d, this);
+			}
+		}
+		for(int i = 0; i < npc.length; i++) {
+			if(npc[i] !=null) {
+				npc[i].draw(graphics2d);
 			}
 		}
 		p.draw(graphics2d);
@@ -161,3 +176,5 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	
 
 }
+
+

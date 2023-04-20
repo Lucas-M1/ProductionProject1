@@ -15,7 +15,7 @@ import main.UserInput;
 public class Player extends Objects {
 	
 	
-	Frame f;
+	
 	UserInput k;
 	
 	public int keyCount = 0;
@@ -24,7 +24,8 @@ public class Player extends Objects {
 	
 	public Player(Frame f, UserInput k) {
 		
-		this.f = f;
+		super(f); //calls the constructor of the super class
+		
 		this.k = k;
 		
 		playerX = f.width/2 - (f.realTileSize/2);
@@ -48,34 +49,23 @@ public class Player extends Objects {
 		
 		
 		
-		l1 = setup("sprite-1");
-		l2 = setup("sprite-3");
-		l3 = setup("sprite-3");
-		upStill = setup("sprite-4");
-		downStill = setup("sprite-6");
-		u1 = setup("sprite-5");
-		u2 = setup("sprite-8");
-		u3 = setup("sprite-9");
-		d1 = setup("sprite-7");
-		d2 = setup("sprite-10");
-		d3 = setup("sprite-11");
-		r1 = setup("sprite-12");
-		r2 = setup("sprite-14");
-		r3 = setup("sprite-14");
+		l1 = setup("/character/sprite-1");
+		l2 = setup("/character/sprite-3");
+		l3 = setup("/character/sprite-3");
+		upStill = setup("/character/sprite-4");
+		downStill = setup("/character/sprite-6");
+		u1 = setup("/character/sprite-5");
+		u2 = setup("/character/sprite-8");
+		u3 = setup("/character/sprite-9");
+		d1 = setup("/character/sprite-7");
+		d2 = setup("/character/sprite-10");
+		d3 = setup("/character/sprite-11");
+		r1 = setup("/character/sprite-12");
+		r2 = setup("/character/sprite-14");
+		r3 = setup("/character/sprite-14");
 	}
 	
-	public BufferedImage setup(String image) {
-		Optimization op = new Optimization();
-		BufferedImage img = null;
-		
-		try {
-			img = ImageIO.read(getClass().getResourceAsStream("/character/" + image +".png"));
-			img = op.scaleImage(img, f.realTileSize, f.realTileSize);
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		return img;
-	}
+	
 	
 	public void basePlayerStats() {
 		
@@ -117,6 +107,9 @@ public class Player extends Objects {
 			
 			int itemCol = f.c.itemCollision(this, true); //Checks for collision with an item such as a door
 			collectItem(itemCol);
+			
+			int npcIndex = f.c.entityCollision(this, f.npc); //NPC array passed to target NPC
+			npcCollision(npcIndex);
 			
 			if (collisionDetected == false) {
 				
@@ -171,10 +164,15 @@ public class Player extends Objects {
 		}
 	}
 	
+	public void npcCollision(int index) {
+		if (index != 999) { //index is only 999 when there is a collision 
+			f.state = f.dialogue;
+			f.npc[index].dealogueText();
+		}
+	}
+	
 	public void draw(Graphics2D graphics2d) {
 		
-		//graphics2d.setColor(Color.green);
-		//graphics2d.fillRect(posX, posY, f.realTileSize, f.realTileSize);
 		BufferedImage img = null;
 		switch (direction) {
 		case "right":
