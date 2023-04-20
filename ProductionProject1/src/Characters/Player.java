@@ -63,12 +63,15 @@ public class Player extends Objects {
 		r1 = setup("/character/sprite-12");
 		r2 = setup("/character/sprite-14");
 		r3 = setup("/character/sprite-14");
+		c1 = setup("/environment/cactus1");
 	}
 	
 	
 	
 	public void basePlayerStats() {
 		
+		maxHealth = 6;
+		health = maxHealth;
 		envX = f.realTileSize * 23; 
 		envY = f.realTileSize * 21;
 		playerSpeed = 4;

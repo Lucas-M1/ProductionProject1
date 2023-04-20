@@ -26,6 +26,38 @@ public class UserInput implements KeyListener {
 	public void keyPressed(KeyEvent e) {                         //When a key is pressed, it's pressed value is set to true 
 		int key = e.getKeyCode();
 		
+		if(f.state == f.titleScreen) {
+			if (key == KeyEvent.VK_W) {
+				f.hud.num--;
+				
+				if(f.hud.num < 0) {
+					f.hud.num = 2;
+				}
+				
+			}
+			if (key == KeyEvent.VK_S) {
+				f.hud.num++;
+				
+				if(f.hud.num > 2) {
+					f.hud.num = 0;
+				}
+				
+			}
+			
+			if(key == KeyEvent.VK_ENTER) {
+				if(f.hud.num == 0) {
+					f.state = f.play;
+				}
+			
+				if(f.hud.num == 0) {
+					
+				}
+				if(f.hud.num == 1) {
+					System.exit(0);
+				}
+			}
+		}
+		
 		if(f.state == f.play) {
 			if (key == KeyEvent.VK_W) {
 				up = true;
@@ -44,12 +76,25 @@ public class UserInput implements KeyListener {
 				
 			}
 			if (key == KeyEvent.VK_ESCAPE) {
-				if(f.state == f.play) {
-					f.state = f.paused;
-				}
-				else if(f.state == f.paused) {
-					f.state = f.play;
-				}
+				f.state = f.paused;
+
+				
+			}
+			
+		}
+		
+		else if (f.state == f.paused) {
+			if (key == KeyEvent.VK_ESCAPE) {
+				f.state = f.play;
+
+				
+			}
+			
+		}
+		
+		else if (f.state == f.dialogue) {
+			if(key == KeyEvent.VK_E) {
+				f.state = f.play;
 			}
 			
 		}

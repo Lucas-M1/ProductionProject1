@@ -11,7 +11,7 @@ public class WorldItems {
 	
 	public int envX;
 	public int envY;
-	public BufferedImage img;
+	public BufferedImage img, health1, health2, health3;
 	public boolean isCollision = false;
 	public String itemName;
 	public Rectangle hitBox = new Rectangle(0,0, 48,48);

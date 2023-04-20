@@ -70,17 +70,35 @@ public void playerImage() { //Gets the png images from the resource package so t
 	
 	public void dialogueSet() {
 		dialogueOptions[0] = "hello";
-		dialogueOptions[1] = "It's rare to see people on this island, what brings you here?";
-		dialogueOptions[2] = "Legend has it there is treasure on this island";
-		dialogueOptions[3] = "Good luck to you on your travels";
+		dialogueOptions[1] = "I am a desert dweller";
+		dialogueOptions[2] = "It's rare to see people on this \nisland, what brings you here?";
+		dialogueOptions[3] = "Legend has it there is treasure \non this island";
+		dialogueOptions[4] = "I heard if you can find the keys, \nyou can open the treasure rooms";
+		dialogueOptions[5] = "Good luck to you on your travels \nand watch out, i've seen \ndangerous creatures around this land";
 
 
 
 	}
 	
 	public void dealogueText() {
+		if(dialogueOptions[dialogueIndex] == null) { //If there is no more text to be displayed in the dialogue box, the text in the box starts from index one again
+			dialogueIndex = 0; 
+		}
 		f.hud.currentDialogue = dialogueOptions[dialogueIndex];
 		dialogueIndex++;
+		
+		if (f.p.direction == "up") {
+			direction = "down";
+		}
+		else if (f.p.direction == "down") {
+			direction = "up";
+		}
+		else if (f.p.direction == "left") {
+			direction = "right";
+		}
+		else if (f.p.direction == "right") {
+			direction = "left";
+		}
 	}
 	
 	

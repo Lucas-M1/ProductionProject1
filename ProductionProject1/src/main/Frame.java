@@ -42,6 +42,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public Player p = new Player(this, k);
 	
 	public int state;
+	public final int titleScreen = 0;
 	public final int dialogue = 3;
 	public final int play = 1;
 	public final int paused = 2;
@@ -67,7 +68,7 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public void itemPlacement() {
 		item.itemLocationSet();
 		item.npc();
-		state = play;
+		state = titleScreen;
 	}
 
 	@Override
@@ -152,20 +153,29 @@ public class Frame extends JPanel implements Runnable{ //Class created to run th
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D graphics2d = (Graphics2D)g;                      //Graphic2D is used over Graphics as it provides more functionality 
-		m.draw(graphics2d);
-		for(int i = 0; i < itm.length; i++) { 
-			if(itm[i] != null) {
-				itm[i].draw(graphics2d, this);
-			}
+		if(state == titleScreen) {
+			hud.draw(graphics2d);
 		}
-		for(int i = 0; i < npc.length; i++) {
-			if(npc[i] !=null) {
-				npc[i].draw(graphics2d);
+		
+		else {
+			m.draw(graphics2d);
+			for(int i = 0; i < itm.length; i++) { 
+				if(itm[i] != null) {
+					itm[i].draw(graphics2d, this);
+				}
 			}
+			for(int i = 0; i < npc.length; i++) {
+				if(npc[i] !=null) {
+					npc[i].draw(graphics2d);
+				}
+			}
+			p.draw(graphics2d);
+			hud.draw(graphics2d);
+			graphics2d.dispose();
+
+			
 		}
-		p.draw(graphics2d);
-		hud.draw(graphics2d);
-		graphics2d.dispose();
+		
 	}
 	
 	

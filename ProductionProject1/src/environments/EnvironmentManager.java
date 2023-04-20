@@ -18,6 +18,7 @@ public class EnvironmentManager {
 	Frame f;
 	public Environment[] env;
 	
+	
 	public EnvironmentManager(Frame f) {
 		
 		
@@ -75,6 +76,8 @@ public class EnvironmentManager {
 			tileSort(48, "castle-left", true);
 			tileSort(49, "castle-topLeft", true);
 			tileSort(50, "castle-top", true);
+			
+			
 
 
 
